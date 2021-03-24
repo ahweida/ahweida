@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.ScreenMapper" >
+
+  <!--查询所有项目基本信息-->
+  <select id="findProjectList" parameterType="List" resultType="ScreenDataVO">
+      SELECT
+          project.id AS "id",
+          project.project_name AS "projectName",
+          project.nick_name AS "nickName",
+          project.latitude AS "latitude",
+          project.longitude AS "longitude",
+          project.remark AS "remark"
+      FROM
+          project project
+      WHERE
+          project.`status` = 1
+          AND end_time > now()
+          AND project.id IN
+      <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+          #{item.projectId}
+      </foreach>
+
+  </select>
+
+
+  <!--根据项目id查询一级指标-->
+  <select id="findProjectMonitorList" parameterType="Project" resultType="ScreenDataVO">
+      SELECT
+          pm.project_id AS "id",
+          project.project_name AS "projectName",
+          project.nick_name AS "nickName",
+          project.remark AS "remark",
+          df.data_name AS "dataDefineVO.dataName",
+          df.data_unit AS "dataDefineVO.dataUnit",
+          pm.data_define_id AS "projectMonitor.dataDefineId",
+          df.mysql_field AS "dataDefineVO.mysqlField",
+          pm.`level` AS "projectMonitor.level",
+          pm.normal_min AS "projectMonitor.normalMin",
+          pm.normal_max AS "projectMonitor.normalMax",
+          pm.warn_min AS "projectMonitor.warnMin",
+          pm.warn_max AS "projectMonitor.warnMax",
+          pm.beyond_min AS "projectMonitor.beyondMin",
+          pm.beyond_max AS "projectMonitor.beyondMax"
+      FROM
+          project project
+      LEFT JOIN project_monitor pm ON project.id = pm.project_id
+      LEFT JOIN data_define df ON pm.data_define_id = df.id
+      WHERE
+            pm.project_id = #{id}
+            AND pm.`level` = 1
+  </select>
+
+    <!--根据项目id查询最新数据-->
+    <select id="findProjectDataList" parameterType="Project" resultType="Map">
+        SELECT
+            <![CDATA[ * ]]>
+        FROM
+            project AS project,
+            `data` AS `data`
+        WHERE
+            `data`.project_id = #{id}
+            AND project.id = `data`.project_id
+            AND project.`status` = 1
+            AND TIMESTAMPDIFF(
+                SECOND,
+                `data`.collect_time,
+                NOW()) <![CDATA[ <= ]]> project.offline_time
+        ORDER BY
+            `data`.collect_time DESC
+            LIMIT 1
+    </select>
+
+
+    <!--查询项目各警告类型的数量-->
+    <select id="findWarnLogData"  resultType="ScreenDataVO">
+        SELECT
+            wl.warn_type AS "warnLog.warnType",
+            COUNT( 1 ) AS "warnCount"
+        FROM
+             `warn_log` wl
+        WHERE
+              wl.project_id = #{projectId}
+            AND
+              TO_SECONDS(wl.collect_time) BETWEEN TO_SECONDS(#{startDate})
+            AND
+              TO_SECONDS(#{endDate})
+        GROUP BY
+             wl.warn_type
+    </select>
+
+    <!--查询项目警告记录-->
+    <select id="findWarnLogDetail" parameterType="Map" resultType="ScreenDataVO">
+        SELECT
+            project.id AS "id",
+            project.project_name AS "projectName",
+            project.nick_name AS "nickName",
+            wl.data_define_id AS "dataDefineVO.id",
+            df.data_name AS "dataDefineVO.dataName",
+            df.data_unit AS "dataDefineVO.dataUnit",
+            wl.data_value AS "warnLog.dataValue",
+            wl.normal_min AS "warnLog.normalMin",
+            wl.normal_max AS "warnLog.normalMax",
+            wl.warn_type  AS "warnLog.warnType",
+            DATE_FORMAT(wl.collect_time,'%Y-%m-%d %H:%i:%s') AS "warnLogTime"
+        FROM
+            project project
+            LEFT JOIN `warn_log` wl ON project.id = wl.project_id
+            LEFT JOIN data_define df ON df.id = wl.data_define_id
+        WHERE
+            project.id = #{projectId}
+        AND wl.warn_type = #{warnType}
+        <if test="null != dataNameId and ''!= dataNameId">
+            AND wl.data_define_id = #{dataNameId}
+        </if>
+        <if test="null !=startDate and ''!=startDate">
+            AND
+            TO_SECONDS(wl.collect_time) BETWEEN TO_SECONDS(#{startDate})
+            AND
+            TO_SECONDS(#{endDate})
+        </if>
+            ORDER BY wl.collect_time DESC
+    </select>
+
+    <!--根据id查询项目基本信息-->
+    <select id="findProjectMsg" parameterType="String" resultType="ScreenDataVO">
+        SELECT
+        project.id AS "id",
+        project.project_name AS "projectName",
+        project.nick_name AS "nickName",
+        project.latitude AS "latitude",
+        project.longitude AS "longitude",
+        project.remark AS "remark"
+        FROM
+        project project
+        WHERE project.id = #{projectId}
+    </select>
+
+    <select id="getDataNameOptions" resultType="DataDefineVO">
+        SELECT
+            df.id AS "id",
+            df.data_name  AS "dataName"
+        FROM
+            data_define df,
+            warn_log wl
+        WHERE
+            df.id = wl.data_define_id
+            AND wl.project_id =  #{projectId}
+            AND wl.warn_type = #{warnType}
+            AND DATE_SUB(NOW(), INTERVAL 3 DAY) <![CDATA[ <= ]]> wl.collect_time
+        GROUP BY
+            df.id
+            ORDER BY
+            df.data_name
+    </select>
+</mapper>

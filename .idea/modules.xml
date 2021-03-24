@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/cloud-system.iml" filepath="$PROJECT_DIR$/.idea/cloud-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ep-common/ep-common.iml" filepath="$PROJECT_DIR$/ep-common/ep-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ep-main/ep-main.iml" filepath="$PROJECT_DIR$/ep-main/ep-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ep-user/ep-user.iml" filepath="$PROJECT_DIR$/ep-user/ep-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ep-zuul/ep-zuul.iml" filepath="$PROJECT_DIR$/ep-zuul/ep-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+    </modules>
+  </component>
+</project>

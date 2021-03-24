@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epuser.mapper.CrmRelationUserMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epuser.dto.CrmRelationUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="crm_account" property="crmAccount" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, crm_account, account, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_relation_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from crm_relation_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epuser.dto.CrmRelationUser" >
+    insert into crm_relation_user (id, crm_account, account, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{crmAccount,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epuser.dto.CrmRelationUser" >
+    insert into crm_relation_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="crmAccount != null" >
+        crm_account,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="crmAccount != null" >
+        #{crmAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epuser.dto.CrmRelationUser" >
+    update crm_relation_user
+    <set >
+      <if test="crmAccount != null" >
+        crm_account = #{crmAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epuser.dto.CrmRelationUser" >
+    update crm_relation_user
+    set crm_account = #{crmAccount,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_relation_user
+    <where>
+      <if test="crmAccount != null and crmAccount != '' ">
+        and crm_account = #{crmAccount}
+      </if>
+      <if test="account != null and account != '' ">
+        and account = #{account}
+      </if>
+      <if test="status != null ">
+        and status = #{status}
+      </if>
+    </where>
+  </select>
+  <select id="selectByCrmAccount" resultMap="BaseResultMap" parameterType="String" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_relation_user
+    where crm_account = #{crmAccount}
+
+
+  </select>
+
+</mapper>

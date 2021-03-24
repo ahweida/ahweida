@@ -1,0 +1,35 @@
+server:
+  port: 8764
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: ep-zuul
+
+
+zuul:
+#  ignoredPatterns: /**/illegal/**   敏感路径，不允许访问
+  routes:
+    api-a:
+      path: /api-ep-main/**
+      serviceId: ep-main
+    api-b:
+      path: /api-ep-user/**
+      serviceId: ep-user
+
+#防止超时
+ribbon:
+  ReadTimeout: 10000
+  SocketTimeout: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

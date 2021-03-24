@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weida.epmain.mapper.ProjectNetMapper">
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.ProjectNet" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="in_num" property="inNum" jdbcType="INTEGER" />
+    <result column="out_num" property="outNum" jdbcType="INTEGER" />
+    <result column="hidden_num" property="hiddenNum" jdbcType="INTEGER" />
+    <result column="predict_time" property="predictTime" jdbcType="INTEGER" />
+    <result column="train_data_limits" property="trainDataLimits" jdbcType="INTEGER" />
+    <result column="iterator_num" property="iteratorNum" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, in_num, out_num, hidden_num, predict_time, train_data_limits, iterator_num, 
+    file_name, version, project_id, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from project_net
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from project_net
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.ProjectNet" >
+    insert into project_net (id, name, in_num, 
+      out_num, hidden_num, predict_time, 
+      train_data_limits, iterator_num, file_name, 
+      version, project_id, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{inNum,jdbcType=INTEGER}, 
+      #{outNum,jdbcType=INTEGER}, #{hiddenNum,jdbcType=INTEGER}, #{predictTime,jdbcType=INTEGER}, 
+      #{trainDataLimits,jdbcType=INTEGER}, #{iteratorNum,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{projectId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.ProjectNet" >
+    insert into project_net
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="inNum != null" >
+        in_num,
+      </if>
+      <if test="outNum != null" >
+        out_num,
+      </if>
+      <if test="hiddenNum != null" >
+        hidden_num,
+      </if>
+      <if test="predictTime != null" >
+        predict_time,
+      </if>
+      <if test="trainDataLimits != null" >
+        train_data_limits,
+      </if>
+      <if test="iteratorNum != null" >
+        iterator_num,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="inNum != null" >
+        #{inNum,jdbcType=INTEGER},
+      </if>
+      <if test="outNum != null" >
+        #{outNum,jdbcType=INTEGER},
+      </if>
+      <if test="hiddenNum != null" >
+        #{hiddenNum,jdbcType=INTEGER},
+      </if>
+      <if test="predictTime != null" >
+        #{predictTime,jdbcType=INTEGER},
+      </if>
+      <if test="trainDataLimits != null" >
+        #{trainDataLimits,jdbcType=INTEGER},
+      </if>
+      <if test="iteratorNum != null" >
+        #{iteratorNum,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.ProjectNet" >
+    update project_net
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="inNum != null" >
+        in_num = #{inNum,jdbcType=INTEGER},
+      </if>
+      <if test="outNum != null" >
+        out_num = #{outNum,jdbcType=INTEGER},
+      </if>
+      <if test="hiddenNum != null" >
+        hidden_num = #{hiddenNum,jdbcType=INTEGER},
+      </if>
+      <if test="predictTime != null" >
+        predict_time = #{predictTime,jdbcType=INTEGER},
+      </if>
+      <if test="trainDataLimits != null" >
+        train_data_limits = #{trainDataLimits,jdbcType=INTEGER},
+      </if>
+      <if test="iteratorNum != null" >
+        iterator_num = #{iteratorNum,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.ProjectNet" >
+    update project_net
+    set name = #{name,jdbcType=VARCHAR},
+      in_num = #{inNum,jdbcType=INTEGER},
+      out_num = #{outNum,jdbcType=INTEGER},
+      hidden_num = #{hiddenNum,jdbcType=INTEGER},
+      predict_time = #{predictTime,jdbcType=INTEGER},
+      train_data_limits = #{trainDataLimits,jdbcType=INTEGER},
+      iterator_num = #{iteratorNum,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectProjectNets" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_net
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectList" parameterType="map" resultType="com.weida.epmain.dto.vo.ProjectNetVO">
+    select
+      id, name, in_num inNUm, out_num outNum,
+      hidden_num hiddenNum, predict_time predictTime,
+      train_data_limits trainDataLimits, iterator_num iteratorNum,
+      file_name fileName, version, project_id projectId, status, create_time createTime, update_time updateTime
+    from project_net
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <update id="updateStatus" parameterType="com.weida.epmain.dto.ProjectNet" >
+    update project_net
+    <set >
+        status = #{status,jdbcType=VARCHAR},
+    </set>
+    where project_id = #{projectId,jdbcType=INTEGER} and name = #{name,jdbcType=VARCHAR}
+  </update>
+  <update id="updateVersion" parameterType="com.weida.epmain.dto.ProjectNet" >
+    update project_net
+    <set >
+      version = #{version,jdbcType=VARCHAR},
+    </set>
+    where project_id = #{projectId,jdbcType=INTEGER} and name = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.105.173.228:3306/ep_main?serverTimezone=GMT%2B8"
+                        userId="ahweida"
+                        password="Weida#2020">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+
+
+        <javaModelGenerator targetPackage="com.weida.epmain.dto" targetProject="src/main/java" />
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" />
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.weida.epmain.mapper" targetProject="src/main/java" />
+
+
+        <table tableName="project" domainObjectName="ProjectCopy"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+        ></table>
+
+
+
+    </context>
+
+</generatorConfiguration>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.DataDefineMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.DataDefine" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="mysql_field" property="mysqlField" jdbcType="VARCHAR" />
+    <result column="tablestore_field" property="tablestoreField" jdbcType="VARCHAR" />
+    <result column="data_type" property="dataType" jdbcType="VARCHAR" />
+    <result column="data_name" property="dataName" jdbcType="VARCHAR" />
+    <result column="data_unit" property="dataUnit" jdbcType="VARCHAR" />
+    <result column="decimal_length" property="decimalLength" jdbcType="INTEGER" />
+    <result column="collection_group_id" property="collectionGroupId" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, mysql_field, tablestore_field, data_type, data_name, data_unit, decimal_length, 
+    collection_group_id, project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_define
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from data_define
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.DataDefine" >
+    insert into data_define (id, mysql_field, tablestore_field, 
+      data_type, data_name, data_unit, 
+      decimal_length, collection_group_id, project_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{mysqlField,jdbcType=VARCHAR}, #{tablestoreField,jdbcType=VARCHAR}, 
+      #{dataType,jdbcType=VARCHAR}, #{dataName,jdbcType=VARCHAR}, #{dataUnit,jdbcType=VARCHAR}, 
+      #{decimalLength,jdbcType=INTEGER}, #{collectionGroupId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.DataDefine" >
+    insert into data_define
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mysqlField != null" >
+        mysql_field,
+      </if>
+      <if test="tablestoreField != null" >
+        tablestore_field,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="dataName != null" >
+        data_name,
+      </if>
+      <if test="dataUnit != null" >
+        data_unit,
+      </if>
+      <if test="decimalLength != null" >
+        decimal_length,
+      </if>
+      <if test="collectionGroupId != null" >
+        collection_group_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mysqlField != null" >
+        #{mysqlField,jdbcType=VARCHAR},
+      </if>
+      <if test="tablestoreField != null" >
+        #{tablestoreField,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataUnit != null" >
+        #{dataUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="decimalLength != null" >
+        #{decimalLength,jdbcType=INTEGER},
+      </if>
+      <if test="collectionGroupId != null" >
+        #{collectionGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.DataDefine" >
+    update data_define
+    <set >
+      <if test="mysqlField != null" >
+        mysql_field = #{mysqlField,jdbcType=VARCHAR},
+      </if>
+      <if test="tablestoreField != null" >
+        tablestore_field = #{tablestoreField,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataName != null" >
+        data_name = #{dataName,jdbcType=VARCHAR},
+      </if>
+      <if test="dataUnit != null" >
+        data_unit = #{dataUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="decimalLength != null" >
+        decimal_length = #{decimalLength,jdbcType=INTEGER},
+      </if>
+      <if test="collectionGroupId != null" >
+        collection_group_id = #{collectionGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.DataDefine" >
+    update data_define
+    set mysql_field = #{mysqlField,jdbcType=VARCHAR},
+      tablestore_field = #{tablestoreField,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=VARCHAR},
+      data_name = #{dataName,jdbcType=VARCHAR},
+      data_unit = #{dataUnit,jdbcType=VARCHAR},
+      decimal_length = #{decimalLength,jdbcType=INTEGER},
+      collection_group_id = #{collectionGroupId,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectDataDefines" parameterType="map" resultType="com.weida.epmain.dto.vo.DataDefineVO">
+    select
+      a.id, a.mysql_field mysqlField, a.tablestore_field tablestoreField, a.data_type dataType, a.data_name dataName, a.data_unit dataUnit, a.decimal_length decimalLength,
+      a.collection_group_id collectionGroupId, c.name collectionGroupName,  a.project_id projectId, b.project_name projectName
+    from data_define a left join project b on a.project_id = b.id  left join data_group c on a.collection_group_id = c.id
+    <where>
+      <if test="projectId != null">
+          and a.project_id =  #{projectId,jdbcType=INTEGER}
+      </if>
+      <if test="mysqlField != null and mysqlField != ''">
+        and a.mysql_field =  #{mysqlField,jdbcType=VARCHAR}
+      </if>
+      <if test="tablestoreField != null and tablestoreField != ''">
+        and a.tablestore_field =  #{tablestoreField,jdbcType=VARCHAR}
+      </if>
+      <if test="dataName != null and dataName != ''">
+        and a.data_name =  #{dataName,jdbcType=VARCHAR}
+      </if>
+      <if test="collectionGroupId != null">
+        and a.collection_group_id =  #{collectionGroupId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectDefines" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from data_define
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectDefinesWithMysqlNotNull" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from data_define
+    <where>
+      mysql_field is not  null and mysql_field != ''
+      <if test="projectId != null ">
+        and project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

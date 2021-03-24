@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.ProjectMonitorMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.ProjectMonitor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="data_define_id" property="dataDefineId" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="normal_min" property="normalMin" jdbcType="DOUBLE" />
+    <result column="normal_max" property="normalMax" jdbcType="DOUBLE" />
+    <result column="warn_min" property="warnMin" jdbcType="DOUBLE" />
+    <result column="warn_max" property="warnMax" jdbcType="DOUBLE" />
+    <result column="beyond_min" property="beyondMin" jdbcType="DOUBLE" />
+    <result column="beyond_max" property="beyondMax" jdbcType="DOUBLE" />
+    <result column="xcoord" property="xcoord" jdbcType="INTEGER" />
+    <result column="ycoord" property="ycoord" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, data_define_id, level, normal_min, normal_max, warn_min, warn_max, 
+    beyond_min, beyond_max, xcoord, ycoord
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_monitor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from project_monitor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.ProjectMonitor" >
+    insert into project_monitor (id, project_id, data_define_id, 
+      level, normal_min, normal_max, 
+      warn_min, warn_max, beyond_min, 
+      beyond_max, xcoord, ycoord
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{dataDefineId,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{normalMin,jdbcType=DOUBLE}, #{normalMax,jdbcType=DOUBLE}, 
+      #{warnMin,jdbcType=DOUBLE}, #{warnMax,jdbcType=DOUBLE}, #{beyondMin,jdbcType=DOUBLE}, 
+      #{beyondMax,jdbcType=DOUBLE}, #{xcoord,jdbcType=INTEGER}, #{ycoord,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.ProjectMonitor" >
+    insert into project_monitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="dataDefineId != null" >
+        data_define_id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="normalMin != null" >
+        normal_min,
+      </if>
+      <if test="normalMax != null" >
+        normal_max,
+      </if>
+      <if test="warnMin != null" >
+        warn_min,
+      </if>
+      <if test="warnMax != null" >
+        warn_max,
+      </if>
+      <if test="beyondMin != null" >
+        beyond_min,
+      </if>
+      <if test="beyondMax != null" >
+        beyond_max,
+      </if>
+      <if test="xcoord != null" >
+        xcoord,
+      </if>
+      <if test="ycoord != null" >
+        ycoord,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="dataDefineId != null" >
+        #{dataDefineId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="normalMin != null" >
+        #{normalMin,jdbcType=DOUBLE},
+      </if>
+      <if test="normalMax != null" >
+        #{normalMax,jdbcType=DOUBLE},
+      </if>
+      <if test="warnMin != null" >
+        #{warnMin,jdbcType=DOUBLE},
+      </if>
+      <if test="warnMax != null" >
+        #{warnMax,jdbcType=DOUBLE},
+      </if>
+      <if test="beyondMin != null" >
+        #{beyondMin,jdbcType=DOUBLE},
+      </if>
+      <if test="beyondMax != null" >
+        #{beyondMax,jdbcType=DOUBLE},
+      </if>
+      <if test="xcoord != null" >
+        #{xcoord,jdbcType=INTEGER},
+      </if>
+      <if test="ycoord != null" >
+        #{ycoord,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.ProjectMonitor" >
+    update project_monitor
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="dataDefineId != null" >
+        data_define_id = #{dataDefineId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="normalMin != null" >
+        normal_min = #{normalMin,jdbcType=DOUBLE},
+      </if>
+      <if test="normalMax != null" >
+        normal_max = #{normalMax,jdbcType=DOUBLE},
+      </if>
+      <if test="warnMin != null" >
+        warn_min = #{warnMin,jdbcType=DOUBLE},
+      </if>
+      <if test="warnMax != null" >
+        warn_max = #{warnMax,jdbcType=DOUBLE},
+      </if>
+      <if test="beyondMin != null" >
+        beyond_min = #{beyondMin,jdbcType=DOUBLE},
+      </if>
+      <if test="beyondMax != null" >
+        beyond_max = #{beyondMax,jdbcType=DOUBLE},
+      </if>
+      <if test="xcoord != null" >
+        xcoord = #{xcoord,jdbcType=INTEGER},
+      </if>
+      <if test="ycoord != null" >
+        ycoord = #{ycoord,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.ProjectMonitor" >
+    update project_monitor
+    set project_id = #{projectId,jdbcType=INTEGER},
+      data_define_id = #{dataDefineId,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      normal_min = #{normalMin,jdbcType=DOUBLE},
+      normal_max = #{normalMax,jdbcType=DOUBLE},
+      warn_min = #{warnMin,jdbcType=DOUBLE},
+      warn_max = #{warnMax,jdbcType=DOUBLE},
+      beyond_min = #{beyondMin,jdbcType=DOUBLE},
+      beyond_max = #{beyondMax,jdbcType=DOUBLE},
+      xcoord = #{xcoord,jdbcType=INTEGER},
+      ycoord = #{ycoord,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectProjectMonitors" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from project_monitor
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+</mapper>

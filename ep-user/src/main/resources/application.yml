@@ -1,0 +1,60 @@
+server:
+  port: 8763
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  hystrix:
+    enabled: true
+
+
+
+spring:
+  application:
+    name: ep-user
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #测试环境
+    url: jdbc:mysql://localhost:3306/ep_user?useUnicode=true&characterEncoding=utf-8&userSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: E20301328
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+
+
+#  mvc:
+#    static-path-pattern=/static/**:
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.weida.epmain.dto
+
+#showSql
+logging:
+  level:
+    com:
+      weida:
+        epmain:
+          mapper: debug
+
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+

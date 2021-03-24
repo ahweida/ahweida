@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.MessageStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.MessageStatus" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="message_id" property="messageId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="topic" property="topic" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, message_id, type, topic, project_id, status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.MessageStatus" >
+    insert into message_status (id, message_id, type, 
+      topic, project_id, status, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{messageId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{topic,jdbcType=VARCHAR}, #{projectId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.MessageStatus" >
+    insert into message_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="messageId != null" >
+        message_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="topic != null" >
+        topic,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="messageId != null" >
+        #{messageId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="topic != null" >
+        #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.MessageStatus" >
+    update message_status
+    <set >
+      <if test="messageId != null" >
+        message_id = #{messageId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="topic != null" >
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByMessageIdSelective" parameterType="com.weida.epmain.dto.MessageStatus" >
+    update message_status
+    <set >
+      <if test="messageId != null" >
+        message_id = #{messageId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="topic != null" >
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where message_id = #{messageId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.MessageStatus" >
+    update message_status
+    set message_id = #{messageId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      topic = #{topic,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectList" resultType="com.weida.epmain.dto.vo.MessageStatusVO" parameterType="map" >
+    select
+    id, message_id messageId, type, topic, project_id projectId, status, create_time createTime
+    from message_status
+    <where>
+      <if test="projectId != null">
+        and project_id = #{projectId}
+      </if>
+      <if test="status != null ">
+        and status = #{status}
+      </if>
+      <if test="startTime != null and startTime !=''">
+        <![CDATA[
+              and create_time >= #{startTime,jdbcType=VARCHAR}
+              ]]>
+      </if>
+      <if test="endTime != null and endTime !=''">
+        <![CDATA[
+              and create_time <= #{endTime,jdbcType=VARCHAR}
+              ]]>
+      </if>
+    </where>
+    order by id desc
+  </select>
+</mapper>

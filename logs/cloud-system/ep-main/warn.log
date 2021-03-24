@@ -1,0 +1,4 @@
+2021-03-24 12:51:23.688 [main] [WARN ] com.netflix.config.sources.URLConfigurationSource.<init> -No URLs will be polled as dynamic configuration sources.
+2021-03-24 12:51:23.692 [main] [WARN ] com.netflix.config.sources.URLConfigurationSource.<init> -No URLs will be polled as dynamic configuration sources.
+2021-03-24 13:04:17.404 [HikariPool-1 housekeeper] [WARN ] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run -HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m21s369ms782µs200ns).
+2021-03-24 13:49:36.699 [HikariPool-1 housekeeper] [WARN ] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run -HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m21s407ms622µs400ns).

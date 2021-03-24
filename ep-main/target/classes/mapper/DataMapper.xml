@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.DataMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.Data" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="collect_time" property="collectTime" jdbcType="VARCHAR" />
+    <result column="batch_id" property="batchId" jdbcType="INTEGER" />
+    <result column="write_time" property="writeTime" jdbcType="VARCHAR" />
+    <result column="x1" property="x1" jdbcType="DOUBLE" />
+    <result column="x2" property="x2" jdbcType="DOUBLE" />
+    <result column="x3" property="x3" jdbcType="DOUBLE" />
+    <result column="x4" property="x4" jdbcType="DOUBLE" />
+    <result column="x5" property="x5" jdbcType="DOUBLE" />
+    <result column="x6" property="x6" jdbcType="DOUBLE" />
+    <result column="x7" property="x7" jdbcType="DOUBLE" />
+    <result column="x8" property="x8" jdbcType="DOUBLE" />
+    <result column="x9" property="x9" jdbcType="DOUBLE" />
+    <result column="x10" property="x10" jdbcType="DOUBLE" />
+    <result column="x11" property="x11" jdbcType="DOUBLE" />
+    <result column="x12" property="x12" jdbcType="DOUBLE" />
+    <result column="x13" property="x13" jdbcType="DOUBLE" />
+    <result column="x14" property="x14" jdbcType="DOUBLE" />
+    <result column="x15" property="x15" jdbcType="DOUBLE" />
+    <result column="x16" property="x16" jdbcType="DOUBLE" />
+    <result column="x17" property="x17" jdbcType="DOUBLE" />
+    <result column="x18" property="x18" jdbcType="DOUBLE" />
+    <result column="x19" property="x19" jdbcType="DOUBLE" />
+    <result column="x20" property="x20" jdbcType="DOUBLE" />
+    <result column="x21" property="x21" jdbcType="DOUBLE" />
+    <result column="x22" property="x22" jdbcType="DOUBLE" />
+    <result column="x23" property="x23" jdbcType="DOUBLE" />
+    <result column="x24" property="x24" jdbcType="DOUBLE" />
+    <result column="x25" property="x25" jdbcType="DOUBLE" />
+    <result column="x26" property="x26" jdbcType="DOUBLE" />
+    <result column="x27" property="x27" jdbcType="DOUBLE" />
+    <result column="x28" property="x28" jdbcType="DOUBLE" />
+    <result column="x29" property="x29" jdbcType="DOUBLE" />
+    <result column="x30" property="x30" jdbcType="DOUBLE" />
+    <result column="x31" property="x31" jdbcType="DOUBLE" />
+    <result column="x32" property="x32" jdbcType="DOUBLE" />
+    <result column="x33" property="x33" jdbcType="DOUBLE" />
+    <result column="x34" property="x34" jdbcType="DOUBLE" />
+    <result column="x35" property="x35" jdbcType="DOUBLE" />
+    <result column="x36" property="x36" jdbcType="DOUBLE" />
+    <result column="x37" property="x37" jdbcType="DOUBLE" />
+    <result column="x38" property="x38" jdbcType="DOUBLE" />
+    <result column="x39" property="x39" jdbcType="DOUBLE" />
+    <result column="x40" property="x40" jdbcType="DOUBLE" />
+    <result column="x41" property="x41" jdbcType="DOUBLE" />
+    <result column="x42" property="x42" jdbcType="DOUBLE" />
+    <result column="x43" property="x43" jdbcType="DOUBLE" />
+    <result column="x44" property="x44" jdbcType="DOUBLE" />
+    <result column="x45" property="x45" jdbcType="DOUBLE" />
+    <result column="x46" property="x46" jdbcType="DOUBLE" />
+    <result column="x47" property="x47" jdbcType="DOUBLE" />
+    <result column="x48" property="x48" jdbcType="DOUBLE" />
+    <result column="x49" property="x49" jdbcType="DOUBLE" />
+    <result column="x50" property="x50" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, collect_time, batch_id, write_time, x1, x2, x3, x4, x5, x6, x7, x8, 
+    x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, 
+    x26, x27, x28, x29, x30, x31, x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42, 
+    x43, x44, x45, x46, x47, x48, x49, x50
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.Data" >
+    insert into data (id, project_id, collect_time, 
+      batch_id, write_time, x1, 
+      x2, x3, x4, x5, 
+      x6, x7, x8, x9, 
+      x10, x11, x12, x13, 
+      x14, x15, x16, x17, 
+      x18, x19, x20, x21, 
+      x22, x23, x24, x25, 
+      x26, x27, x28, x29, 
+      x30, x31, x32, x33, 
+      x34, x35, x36, x37, 
+      x38, x39, x40, x41, 
+      x42, x43, x44, x45, 
+      x46, x47, x48, x49, 
+      x50)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{collectTime,jdbcType=VARCHAR}, 
+      #{batchId,jdbcType=INTEGER}, NOW(), #{x1,jdbcType=DOUBLE},
+      #{x2,jdbcType=DOUBLE}, #{x3,jdbcType=DOUBLE}, #{x4,jdbcType=DOUBLE}, #{x5,jdbcType=DOUBLE}, 
+      #{x6,jdbcType=DOUBLE}, #{x7,jdbcType=DOUBLE}, #{x8,jdbcType=DOUBLE}, #{x9,jdbcType=DOUBLE}, 
+      #{x10,jdbcType=DOUBLE}, #{x11,jdbcType=DOUBLE}, #{x12,jdbcType=DOUBLE}, #{x13,jdbcType=DOUBLE}, 
+      #{x14,jdbcType=DOUBLE}, #{x15,jdbcType=DOUBLE}, #{x16,jdbcType=DOUBLE}, #{x17,jdbcType=DOUBLE}, 
+      #{x18,jdbcType=DOUBLE}, #{x19,jdbcType=DOUBLE}, #{x20,jdbcType=DOUBLE}, #{x21,jdbcType=DOUBLE}, 
+      #{x22,jdbcType=DOUBLE}, #{x23,jdbcType=DOUBLE}, #{x24,jdbcType=DOUBLE}, #{x25,jdbcType=DOUBLE}, 
+      #{x26,jdbcType=DOUBLE}, #{x27,jdbcType=DOUBLE}, #{x28,jdbcType=DOUBLE}, #{x29,jdbcType=DOUBLE}, 
+      #{x30,jdbcType=DOUBLE}, #{x31,jdbcType=DOUBLE}, #{x32,jdbcType=DOUBLE}, #{x33,jdbcType=DOUBLE}, 
+      #{x34,jdbcType=DOUBLE}, #{x35,jdbcType=DOUBLE}, #{x36,jdbcType=DOUBLE}, #{x37,jdbcType=DOUBLE}, 
+      #{x38,jdbcType=DOUBLE}, #{x39,jdbcType=DOUBLE}, #{x40,jdbcType=DOUBLE}, #{x41,jdbcType=DOUBLE}, 
+      #{x42,jdbcType=DOUBLE}, #{x43,jdbcType=DOUBLE}, #{x44,jdbcType=DOUBLE}, #{x45,jdbcType=DOUBLE}, 
+      #{x46,jdbcType=DOUBLE}, #{x47,jdbcType=DOUBLE}, #{x48,jdbcType=DOUBLE}, #{x49,jdbcType=DOUBLE}, 
+      #{x50,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.Data" >
+    insert into data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="writeTime != null" >
+        write_time,
+      </if>
+      <if test="x1 != null" >
+        x1,
+      </if>
+      <if test="x2 != null" >
+        x2,
+      </if>
+      <if test="x3 != null" >
+        x3,
+      </if>
+      <if test="x4 != null" >
+        x4,
+      </if>
+      <if test="x5 != null" >
+        x5,
+      </if>
+      <if test="x6 != null" >
+        x6,
+      </if>
+      <if test="x7 != null" >
+        x7,
+      </if>
+      <if test="x8 != null" >
+        x8,
+      </if>
+      <if test="x9 != null" >
+        x9,
+      </if>
+      <if test="x10 != null" >
+        x10,
+      </if>
+      <if test="x11 != null" >
+        x11,
+      </if>
+      <if test="x12 != null" >
+        x12,
+      </if>
+      <if test="x13 != null" >
+        x13,
+      </if>
+      <if test="x14 != null" >
+        x14,
+      </if>
+      <if test="x15 != null" >
+        x15,
+      </if>
+      <if test="x16 != null" >
+        x16,
+      </if>
+      <if test="x17 != null" >
+        x17,
+      </if>
+      <if test="x18 != null" >
+        x18,
+      </if>
+      <if test="x19 != null" >
+        x19,
+      </if>
+      <if test="x20 != null" >
+        x20,
+      </if>
+      <if test="x21 != null" >
+        x21,
+      </if>
+      <if test="x22 != null" >
+        x22,
+      </if>
+      <if test="x23 != null" >
+        x23,
+      </if>
+      <if test="x24 != null" >
+        x24,
+      </if>
+      <if test="x25 != null" >
+        x25,
+      </if>
+      <if test="x26 != null" >
+        x26,
+      </if>
+      <if test="x27 != null" >
+        x27,
+      </if>
+      <if test="x28 != null" >
+        x28,
+      </if>
+      <if test="x29 != null" >
+        x29,
+      </if>
+      <if test="x30 != null" >
+        x30,
+      </if>
+      <if test="x31 != null" >
+        x31,
+      </if>
+      <if test="x32 != null" >
+        x32,
+      </if>
+      <if test="x33 != null" >
+        x33,
+      </if>
+      <if test="x34 != null" >
+        x34,
+      </if>
+      <if test="x35 != null" >
+        x35,
+      </if>
+      <if test="x36 != null" >
+        x36,
+      </if>
+      <if test="x37 != null" >
+        x37,
+      </if>
+      <if test="x38 != null" >
+        x38,
+      </if>
+      <if test="x39 != null" >
+        x39,
+      </if>
+      <if test="x40 != null" >
+        x40,
+      </if>
+      <if test="x41 != null" >
+        x41,
+      </if>
+      <if test="x42 != null" >
+        x42,
+      </if>
+      <if test="x43 != null" >
+        x43,
+      </if>
+      <if test="x44 != null" >
+        x44,
+      </if>
+      <if test="x45 != null" >
+        x45,
+      </if>
+      <if test="x46 != null" >
+        x46,
+      </if>
+      <if test="x47 != null" >
+        x47,
+      </if>
+      <if test="x48 != null" >
+        x48,
+      </if>
+      <if test="x49 != null" >
+        x49,
+      </if>
+      <if test="x50 != null" >
+        x50,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="writeTime != null" >
+        #{writeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="x1 != null" >
+        #{x1,jdbcType=DOUBLE},
+      </if>
+      <if test="x2 != null" >
+        #{x2,jdbcType=DOUBLE},
+      </if>
+      <if test="x3 != null" >
+        #{x3,jdbcType=DOUBLE},
+      </if>
+      <if test="x4 != null" >
+        #{x4,jdbcType=DOUBLE},
+      </if>
+      <if test="x5 != null" >
+        #{x5,jdbcType=DOUBLE},
+      </if>
+      <if test="x6 != null" >
+        #{x6,jdbcType=DOUBLE},
+      </if>
+      <if test="x7 != null" >
+        #{x7,jdbcType=DOUBLE},
+      </if>
+      <if test="x8 != null" >
+        #{x8,jdbcType=DOUBLE},
+      </if>
+      <if test="x9 != null" >
+        #{x9,jdbcType=DOUBLE},
+      </if>
+      <if test="x10 != null" >
+        #{x10,jdbcType=DOUBLE},
+      </if>
+      <if test="x11 != null" >
+        #{x11,jdbcType=DOUBLE},
+      </if>
+      <if test="x12 != null" >
+        #{x12,jdbcType=DOUBLE},
+      </if>
+      <if test="x13 != null" >
+        #{x13,jdbcType=DOUBLE},
+      </if>
+      <if test="x14 != null" >
+        #{x14,jdbcType=DOUBLE},
+      </if>
+      <if test="x15 != null" >
+        #{x15,jdbcType=DOUBLE},
+      </if>
+      <if test="x16 != null" >
+        #{x16,jdbcType=DOUBLE},
+      </if>
+      <if test="x17 != null" >
+        #{x17,jdbcType=DOUBLE},
+      </if>
+      <if test="x18 != null" >
+        #{x18,jdbcType=DOUBLE},
+      </if>
+      <if test="x19 != null" >
+        #{x19,jdbcType=DOUBLE},
+      </if>
+      <if test="x20 != null" >
+        #{x20,jdbcType=DOUBLE},
+      </if>
+      <if test="x21 != null" >
+        #{x21,jdbcType=DOUBLE},
+      </if>
+      <if test="x22 != null" >
+        #{x22,jdbcType=DOUBLE},
+      </if>
+      <if test="x23 != null" >
+        #{x23,jdbcType=DOUBLE},
+      </if>
+      <if test="x24 != null" >
+        #{x24,jdbcType=DOUBLE},
+      </if>
+      <if test="x25 != null" >
+        #{x25,jdbcType=DOUBLE},
+      </if>
+      <if test="x26 != null" >
+        #{x26,jdbcType=DOUBLE},
+      </if>
+      <if test="x27 != null" >
+        #{x27,jdbcType=DOUBLE},
+      </if>
+      <if test="x28 != null" >
+        #{x28,jdbcType=DOUBLE},
+      </if>
+      <if test="x29 != null" >
+        #{x29,jdbcType=DOUBLE},
+      </if>
+      <if test="x30 != null" >
+        #{x30,jdbcType=DOUBLE},
+      </if>
+      <if test="x31 != null" >
+        #{x31,jdbcType=DOUBLE},
+      </if>
+      <if test="x32 != null" >
+        #{x32,jdbcType=DOUBLE},
+      </if>
+      <if test="x33 != null" >
+        #{x33,jdbcType=DOUBLE},
+      </if>
+      <if test="x34 != null" >
+        #{x34,jdbcType=DOUBLE},
+      </if>
+      <if test="x35 != null" >
+        #{x35,jdbcType=DOUBLE},
+      </if>
+      <if test="x36 != null" >
+        #{x36,jdbcType=DOUBLE},
+      </if>
+      <if test="x37 != null" >
+        #{x37,jdbcType=DOUBLE},
+      </if>
+      <if test="x38 != null" >
+        #{x38,jdbcType=DOUBLE},
+      </if>
+      <if test="x39 != null" >
+        #{x39,jdbcType=DOUBLE},
+      </if>
+      <if test="x40 != null" >
+        #{x40,jdbcType=DOUBLE},
+      </if>
+      <if test="x41 != null" >
+        #{x41,jdbcType=DOUBLE},
+      </if>
+      <if test="x42 != null" >
+        #{x42,jdbcType=DOUBLE},
+      </if>
+      <if test="x43 != null" >
+        #{x43,jdbcType=DOUBLE},
+      </if>
+      <if test="x44 != null" >
+        #{x44,jdbcType=DOUBLE},
+      </if>
+      <if test="x45 != null" >
+        #{x45,jdbcType=DOUBLE},
+      </if>
+      <if test="x46 != null" >
+        #{x46,jdbcType=DOUBLE},
+      </if>
+      <if test="x47 != null" >
+        #{x47,jdbcType=DOUBLE},
+      </if>
+      <if test="x48 != null" >
+        #{x48,jdbcType=DOUBLE},
+      </if>
+      <if test="x49 != null" >
+        #{x49,jdbcType=DOUBLE},
+      </if>
+      <if test="x50 != null" >
+        #{x50,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.Data" >
+    update data
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        collect_time = #{collectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        batch_id = #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="writeTime != null" >
+        write_time = #{writeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="x1 != null" >
+        x1 = #{x1,jdbcType=DOUBLE},
+      </if>
+      <if test="x2 != null" >
+        x2 = #{x2,jdbcType=DOUBLE},
+      </if>
+      <if test="x3 != null" >
+        x3 = #{x3,jdbcType=DOUBLE},
+      </if>
+      <if test="x4 != null" >
+        x4 = #{x4,jdbcType=DOUBLE},
+      </if>
+      <if test="x5 != null" >
+        x5 = #{x5,jdbcType=DOUBLE},
+      </if>
+      <if test="x6 != null" >
+        x6 = #{x6,jdbcType=DOUBLE},
+      </if>
+      <if test="x7 != null" >
+        x7 = #{x7,jdbcType=DOUBLE},
+      </if>
+      <if test="x8 != null" >
+        x8 = #{x8,jdbcType=DOUBLE},
+      </if>
+      <if test="x9 != null" >
+        x9 = #{x9,jdbcType=DOUBLE},
+      </if>
+      <if test="x10 != null" >
+        x10 = #{x10,jdbcType=DOUBLE},
+      </if>
+      <if test="x11 != null" >
+        x11 = #{x11,jdbcType=DOUBLE},
+      </if>
+      <if test="x12 != null" >
+        x12 = #{x12,jdbcType=DOUBLE},
+      </if>
+      <if test="x13 != null" >
+        x13 = #{x13,jdbcType=DOUBLE},
+      </if>
+      <if test="x14 != null" >
+        x14 = #{x14,jdbcType=DOUBLE},
+      </if>
+      <if test="x15 != null" >
+        x15 = #{x15,jdbcType=DOUBLE},
+      </if>
+      <if test="x16 != null" >
+        x16 = #{x16,jdbcType=DOUBLE},
+      </if>
+      <if test="x17 != null" >
+        x17 = #{x17,jdbcType=DOUBLE},
+      </if>
+      <if test="x18 != null" >
+        x18 = #{x18,jdbcType=DOUBLE},
+      </if>
+      <if test="x19 != null" >
+        x19 = #{x19,jdbcType=DOUBLE},
+      </if>
+      <if test="x20 != null" >
+        x20 = #{x20,jdbcType=DOUBLE},
+      </if>
+      <if test="x21 != null" >
+        x21 = #{x21,jdbcType=DOUBLE},
+      </if>
+      <if test="x22 != null" >
+        x22 = #{x22,jdbcType=DOUBLE},
+      </if>
+      <if test="x23 != null" >
+        x23 = #{x23,jdbcType=DOUBLE},
+      </if>
+      <if test="x24 != null" >
+        x24 = #{x24,jdbcType=DOUBLE},
+      </if>
+      <if test="x25 != null" >
+        x25 = #{x25,jdbcType=DOUBLE},
+      </if>
+      <if test="x26 != null" >
+        x26 = #{x26,jdbcType=DOUBLE},
+      </if>
+      <if test="x27 != null" >
+        x27 = #{x27,jdbcType=DOUBLE},
+      </if>
+      <if test="x28 != null" >
+        x28 = #{x28,jdbcType=DOUBLE},
+      </if>
+      <if test="x29 != null" >
+        x29 = #{x29,jdbcType=DOUBLE},
+      </if>
+      <if test="x30 != null" >
+        x30 = #{x30,jdbcType=DOUBLE},
+      </if>
+      <if test="x31 != null" >
+        x31 = #{x31,jdbcType=DOUBLE},
+      </if>
+      <if test="x32 != null" >
+        x32 = #{x32,jdbcType=DOUBLE},
+      </if>
+      <if test="x33 != null" >
+        x33 = #{x33,jdbcType=DOUBLE},
+      </if>
+      <if test="x34 != null" >
+        x34 = #{x34,jdbcType=DOUBLE},
+      </if>
+      <if test="x35 != null" >
+        x35 = #{x35,jdbcType=DOUBLE},
+      </if>
+      <if test="x36 != null" >
+        x36 = #{x36,jdbcType=DOUBLE},
+      </if>
+      <if test="x37 != null" >
+        x37 = #{x37,jdbcType=DOUBLE},
+      </if>
+      <if test="x38 != null" >
+        x38 = #{x38,jdbcType=DOUBLE},
+      </if>
+      <if test="x39 != null" >
+        x39 = #{x39,jdbcType=DOUBLE},
+      </if>
+      <if test="x40 != null" >
+        x40 = #{x40,jdbcType=DOUBLE},
+      </if>
+      <if test="x41 != null" >
+        x41 = #{x41,jdbcType=DOUBLE},
+      </if>
+      <if test="x42 != null" >
+        x42 = #{x42,jdbcType=DOUBLE},
+      </if>
+      <if test="x43 != null" >
+        x43 = #{x43,jdbcType=DOUBLE},
+      </if>
+      <if test="x44 != null" >
+        x44 = #{x44,jdbcType=DOUBLE},
+      </if>
+      <if test="x45 != null" >
+        x45 = #{x45,jdbcType=DOUBLE},
+      </if>
+      <if test="x46 != null" >
+        x46 = #{x46,jdbcType=DOUBLE},
+      </if>
+      <if test="x47 != null" >
+        x47 = #{x47,jdbcType=DOUBLE},
+      </if>
+      <if test="x48 != null" >
+        x48 = #{x48,jdbcType=DOUBLE},
+      </if>
+      <if test="x49 != null" >
+        x49 = #{x49,jdbcType=DOUBLE},
+      </if>
+      <if test="x50 != null" >
+        x50 = #{x50,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.Data" >
+    update data
+    set project_id = #{projectId,jdbcType=INTEGER},
+      collect_time = #{collectTime,jdbcType=VARCHAR},
+      batch_id = #{batchId,jdbcType=INTEGER},
+      write_time = #{writeTime,jdbcType=VARCHAR},
+      x1 = #{x1,jdbcType=DOUBLE},
+      x2 = #{x2,jdbcType=DOUBLE},
+      x3 = #{x3,jdbcType=DOUBLE},
+      x4 = #{x4,jdbcType=DOUBLE},
+      x5 = #{x5,jdbcType=DOUBLE},
+      x6 = #{x6,jdbcType=DOUBLE},
+      x7 = #{x7,jdbcType=DOUBLE},
+      x8 = #{x8,jdbcType=DOUBLE},
+      x9 = #{x9,jdbcType=DOUBLE},
+      x10 = #{x10,jdbcType=DOUBLE},
+      x11 = #{x11,jdbcType=DOUBLE},
+      x12 = #{x12,jdbcType=DOUBLE},
+      x13 = #{x13,jdbcType=DOUBLE},
+      x14 = #{x14,jdbcType=DOUBLE},
+      x15 = #{x15,jdbcType=DOUBLE},
+      x16 = #{x16,jdbcType=DOUBLE},
+      x17 = #{x17,jdbcType=DOUBLE},
+      x18 = #{x18,jdbcType=DOUBLE},
+      x19 = #{x19,jdbcType=DOUBLE},
+      x20 = #{x20,jdbcType=DOUBLE},
+      x21 = #{x21,jdbcType=DOUBLE},
+      x22 = #{x22,jdbcType=DOUBLE},
+      x23 = #{x23,jdbcType=DOUBLE},
+      x24 = #{x24,jdbcType=DOUBLE},
+      x25 = #{x25,jdbcType=DOUBLE},
+      x26 = #{x26,jdbcType=DOUBLE},
+      x27 = #{x27,jdbcType=DOUBLE},
+      x28 = #{x28,jdbcType=DOUBLE},
+      x29 = #{x29,jdbcType=DOUBLE},
+      x30 = #{x30,jdbcType=DOUBLE},
+      x31 = #{x31,jdbcType=DOUBLE},
+      x32 = #{x32,jdbcType=DOUBLE},
+      x33 = #{x33,jdbcType=DOUBLE},
+      x34 = #{x34,jdbcType=DOUBLE},
+      x35 = #{x35,jdbcType=DOUBLE},
+      x36 = #{x36,jdbcType=DOUBLE},
+      x37 = #{x37,jdbcType=DOUBLE},
+      x38 = #{x38,jdbcType=DOUBLE},
+      x39 = #{x39,jdbcType=DOUBLE},
+      x40 = #{x40,jdbcType=DOUBLE},
+      x41 = #{x41,jdbcType=DOUBLE},
+      x42 = #{x42,jdbcType=DOUBLE},
+      x43 = #{x43,jdbcType=DOUBLE},
+      x44 = #{x44,jdbcType=DOUBLE},
+      x45 = #{x45,jdbcType=DOUBLE},
+      x46 = #{x46,jdbcType=DOUBLE},
+      x47 = #{x47,jdbcType=DOUBLE},
+      x48 = #{x48,jdbcType=DOUBLE},
+      x49 = #{x49,jdbcType=DOUBLE},
+      x50 = #{x50,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByDynamicSql" parameterType="String" resultType="com.weida.epmain.dto.vo.DataVO">
+    ${dynamicSql}
+  </select>
+  <select id="selectCenterDatas" parameterType="map" resultType="map">
+    select
+          ${fields}
+    from data
+    <where>
+      <if test="projectId != null">
+        and project_id = #{projectId}
+      </if>
+    </where>
+    ORDER BY id desc
+    limit 1
+  </select>
+  <select id="selectCustomTarget" parameterType="map" resultType="map">
+    select
+        ${fields}
+    from data
+    <where>
+      <if test="projectId != null">
+        and project_id = #{projectId}
+      </if>
+      <if test="startTime != null">
+        and collect_time <![CDATA[ >= ]]> #{startTime}
+      </if>
+      <if test="endTime != null">
+        and collect_time <![CDATA[ <= ]]> #{endTime}
+      </if>
+    </where>
+    ORDER BY collectTime
+  </select>
+  <select id="selectCustomTargetAvg" parameterType="map" resultType="map">
+    select
+        ${avgFields}
+    from data
+    <where>
+      <if test="projectId != null">
+        and project_id = #{projectId}
+      </if>
+      <if test="startTime != null">
+        and collect_time <![CDATA[ >= ]]> #{startTime}
+      </if>
+      <if test="endTime != null">
+        and collect_time <![CDATA[ <= ]]> #{endTime}
+      </if>
+    </where>
+    group by DATE_FORMAT(collect_time, '%Y-%m-%d %H')
+    ORDER BY collectTime
+  </select>
+  <select id="selectLastCollectTime"  resultType="map">
+   select project_id projectId, max(collect_time) collectTime
+   from data
+   GROUP BY project_id
+  </select>
+</mapper>

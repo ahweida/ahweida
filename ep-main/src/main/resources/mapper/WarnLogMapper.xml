@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.WarnLogMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.WarnLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="data_define_id" property="dataDefineId" jdbcType="INTEGER" />
+    <result column="collect_time" property="collectTime" jdbcType="TIMESTAMP" />
+    <result column="data_value" property="dataValue" jdbcType="DOUBLE" />
+    <result column="warn_type" property="warnType" jdbcType="INTEGER" />
+    <result column="normal_min" property="normalMin" jdbcType="DOUBLE" />
+    <result column="normal_max" property="normalMax" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, data_define_id, collect_time, data_value, warn_type, normal_min, 
+    normal_max
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from warn_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from warn_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.WarnLog" >
+    insert into warn_log (id, project_id, data_define_id, 
+      collect_time, data_value, warn_type, 
+      normal_min, normal_max)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{dataDefineId,jdbcType=INTEGER}, 
+      #{collectTime,jdbcType=TIMESTAMP}, #{dataValue,jdbcType=DOUBLE}, #{warnType,jdbcType=INTEGER}, 
+      #{normalMin,jdbcType=DOUBLE}, #{normalMax,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.WarnLog" >
+    insert into warn_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="dataDefineId != null" >
+        data_define_id,
+      </if>
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+      <if test="dataValue != null" >
+        data_value,
+      </if>
+      <if test="warnType != null" >
+        warn_type,
+      </if>
+      <if test="normalMin != null" >
+        normal_min,
+      </if>
+      <if test="normalMax != null" >
+        normal_max,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="dataDefineId != null" >
+        #{dataDefineId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataValue != null" >
+        #{dataValue,jdbcType=DOUBLE},
+      </if>
+      <if test="warnType != null" >
+        #{warnType,jdbcType=INTEGER},
+      </if>
+      <if test="normalMin != null" >
+        #{normalMin,jdbcType=DOUBLE},
+      </if>
+      <if test="normalMax != null" >
+        #{normalMax,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.WarnLog" >
+    update warn_log
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="dataDefineId != null" >
+        data_define_id = #{dataDefineId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataValue != null" >
+        data_value = #{dataValue,jdbcType=DOUBLE},
+      </if>
+      <if test="warnType != null" >
+        warn_type = #{warnType,jdbcType=INTEGER},
+      </if>
+      <if test="normalMin != null" >
+        normal_min = #{normalMin,jdbcType=DOUBLE},
+      </if>
+      <if test="normalMax != null" >
+        normal_max = #{normalMax,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.WarnLog" >
+    update warn_log
+    set project_id = #{projectId,jdbcType=INTEGER},
+      data_define_id = #{dataDefineId,jdbcType=INTEGER},
+      collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      data_value = #{dataValue,jdbcType=DOUBLE},
+      warn_type = #{warnType,jdbcType=INTEGER},
+      normal_min = #{normalMin,jdbcType=DOUBLE},
+      normal_max = #{normalMax,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

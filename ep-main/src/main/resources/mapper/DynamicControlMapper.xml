@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weida.epmain.mapper.DynamicControlMapper" >
+  <resultMap id="BaseResultMap" type="com.weida.epmain.dto.DynamicControl" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="out_max" property="outMax" jdbcType="INTEGER" />
+    <result column="out_min" property="outMin" jdbcType="INTEGER" />
+    <result column="ratio" property="ratio" jdbcType="DOUBLE" />
+    <result column="constant" property="constant" jdbcType="DOUBLE" />
+    <result column="direct_part" property="directPart" jdbcType="DOUBLE" />
+    <result column="add_max" property="addMax" jdbcType="DOUBLE" />
+    <result column="add_min" property="addMin" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, group_id, out_max, out_min, ratio, constant, direct_part, add_max, 
+    add_min
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dynamic_control
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dynamic_control
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weida.epmain.dto.DynamicControl" >
+    insert into dynamic_control (id, project_id, group_id, 
+      out_max, out_min, ratio, 
+      constant, direct_part, add_max, 
+      add_min)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, 
+      #{outMax,jdbcType=INTEGER}, #{outMin,jdbcType=INTEGER}, #{ratio,jdbcType=DOUBLE}, 
+      #{constant,jdbcType=DOUBLE}, #{directPart,jdbcType=DOUBLE}, #{addMax,jdbcType=DOUBLE}, 
+      #{addMin,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weida.epmain.dto.DynamicControl" >
+    insert into dynamic_control
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="outMax != null" >
+        out_max,
+      </if>
+      <if test="outMin != null" >
+        out_min,
+      </if>
+      <if test="ratio != null" >
+        ratio,
+      </if>
+      <if test="constant != null" >
+        constant,
+      </if>
+      <if test="directPart != null" >
+        direct_part,
+      </if>
+      <if test="addMax != null" >
+        add_max,
+      </if>
+      <if test="addMin != null" >
+        add_min,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="outMax != null" >
+        #{outMax,jdbcType=INTEGER},
+      </if>
+      <if test="outMin != null" >
+        #{outMin,jdbcType=INTEGER},
+      </if>
+      <if test="ratio != null" >
+        #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="constant != null" >
+        #{constant,jdbcType=DOUBLE},
+      </if>
+      <if test="directPart != null" >
+        #{directPart,jdbcType=DOUBLE},
+      </if>
+      <if test="addMax != null" >
+        #{addMax,jdbcType=DOUBLE},
+      </if>
+      <if test="addMin != null" >
+        #{addMin,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weida.epmain.dto.DynamicControl" >
+    update dynamic_control
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="outMax != null" >
+        out_max = #{outMax,jdbcType=INTEGER},
+      </if>
+      <if test="outMin != null" >
+        out_min = #{outMin,jdbcType=INTEGER},
+      </if>
+      <if test="ratio != null" >
+        ratio = #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="constant != null" >
+        constant = #{constant,jdbcType=DOUBLE},
+      </if>
+      <if test="directPart != null" >
+        direct_part = #{directPart,jdbcType=DOUBLE},
+      </if>
+      <if test="addMax != null" >
+        add_max = #{addMax,jdbcType=DOUBLE},
+      </if>
+      <if test="addMin != null" >
+        add_min = #{addMin,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weida.epmain.dto.DynamicControl" >
+    update dynamic_control
+    set project_id = #{projectId,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=INTEGER},
+      out_max = #{outMax,jdbcType=INTEGER},
+      out_min = #{outMin,jdbcType=INTEGER},
+      ratio = #{ratio,jdbcType=DOUBLE},
+      constant = #{constant,jdbcType=DOUBLE},
+      direct_part = #{directPart,jdbcType=DOUBLE},
+      add_max = #{addMax,jdbcType=DOUBLE},
+      add_min = #{addMin,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectDynamicControls" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dynamic_control
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectByProjectId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dynamic_control
+    <where>
+      <if test="projectId != null ">
+        project_id = #{projectId,jdbcType=INTEGER}
+      </if>
+    </where>
+
+  </select>
+</mapper>

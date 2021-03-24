@@ -1,0 +1,2 @@
+2021-03-24 12:13:31.532 [localhost-startStop-1] [WARN ] com.netflix.config.sources.URLConfigurationSource.<init> -No URLs will be polled as dynamic configuration sources.
+2021-03-24 12:13:37.159 [main] [WARN ] com.netflix.config.sources.URLConfigurationSource.<init> -No URLs will be polled as dynamic configuration sources.
