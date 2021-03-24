@@ -14,4 +14,6 @@ public interface MenuMapper {
     int updateByPrimaryKeySelective(Menu record);
 
     int updateByPrimaryKey(Menu record);
+
+    void delMenuById(Menu menu);
 }

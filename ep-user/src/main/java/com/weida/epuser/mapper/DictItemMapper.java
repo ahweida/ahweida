@@ -14,4 +14,6 @@ public interface DictItemMapper {
     int updateByPrimaryKeySelective(DictItem record);
 
     int updateByPrimaryKey(DictItem record);
+
+    void delDictItemById(DictItem dictItem);
 }

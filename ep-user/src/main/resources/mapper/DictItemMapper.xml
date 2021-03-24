@@ -150,4 +150,12 @@
       update_user = #{updateUser,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="delDictItemById" parameterType="com.weida.epuser.dto.DictItem" >
+    update dict_item
+    set dict_id = #{dictId, jdbcType=INTEGER},
+        update_time = NOW(),
+        update_user = #{updateUser, jdbcType=INTEGER}
+    where id = #{id, jdbcType=INTEGER}
+  </update>
 </mapper>

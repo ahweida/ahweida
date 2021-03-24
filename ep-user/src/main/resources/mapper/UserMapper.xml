@@ -230,12 +230,8 @@
     </where>
   </select>
 
-  <update id="delUserById" parameterType="com.weida.epuser.dto.User">
-    update user
-    set
-      status = #{status,jdbcType=INTEGER},
-      update_time = NOW(),
-      update_user = #{updateUser,jdbcType=INTEGER}
+  <delete id="delUserById" parameterType="java.lang.Integer">
+    delete from user
     where id = #{id,jdbcType=INTEGER}
-  </update>
+  </delete>
 </mapper>

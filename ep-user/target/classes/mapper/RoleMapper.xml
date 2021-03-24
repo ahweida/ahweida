@@ -140,8 +140,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <delete id="delRoleById" parameterType="java.lang.Integer" >
-    delete from role
+  <update id="delRoleById" parameterType="com.weida.epuser.dto.Role">
+    update role
+    set
+      dalete_flag = #{daleteFlag,jdbcType=INTEGER},
+      update_time = NOW(),
+      update_user = #{updateUser,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
-  </delete>
+  </update>
 </mapper>

@@ -114,4 +114,12 @@
       update_user = #{updateUser,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="delDictById" parameterMap="com.weida.epuser.dto.Dict" >
+    update dict
+    set name = #{name, jdbcType=VARCHAR},
+        update_time = NOW(),
+        update_user = #{updateUser, jdbcType=TIMESTAMP}
+    where id = #{id, jdbcType=INTEGER}
+  </update>
 </mapper>
